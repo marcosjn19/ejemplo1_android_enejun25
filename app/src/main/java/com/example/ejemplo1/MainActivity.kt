@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -102,12 +103,12 @@ fun TextFieldPlaceHolder() {
 
 @Composable
 fun TextFieldKeyboard() {
-    var text by remember { mutableStateOf ( "" ) }
+    var text by remember { mutableStateOf("") }
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextField (
+        TextField(
             value = text,
             onValueChange = { newText -> text = newText },
             label = { Text("Número") },
@@ -116,5 +117,23 @@ fun TextFieldKeyboard() {
         Text(
             text = "El numero es $text"
         )
+    }
+
+    @Composable
+    fun OutLineTextField() {
+        var text by remember { mutableStateOf("") }
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            OutlinedTextField(
+                value = text,
+                onValueChange = { newText -> text = newText },
+                label = { Text("Número") }
+            )
+            Text(
+                text = "El numero es $text"
+            )
+        }
     }
 }
