@@ -11,6 +11,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -41,6 +45,10 @@ class MainActivity : ComponentActivity() {
                     TextFieldPlaceHolder()
                     Spacer(Modifier.size(50.dp))
                     TextFieldKeyboard()
+                    Spacer(Modifier.size(50.dp))
+                    TextFieldOutline()
+                    Spacer(Modifier.size(50.dp))
+                    TextFieldIcono()
                 }
             }
         }
@@ -103,12 +111,12 @@ fun TextFieldPlaceHolder() {
 
 @Composable
 fun TextFieldKeyboard() {
-    var text by remember { mutableStateOf("") }
+    var text by remember { mutableStateOf ( "" ) }
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextField(
+        TextField (
             value = text,
             onValueChange = { newText -> text = newText },
             label = { Text("Número") },
@@ -118,22 +126,42 @@ fun TextFieldKeyboard() {
             text = "El numero es $text"
         )
     }
+}
 
-    @Composable
-    fun OutLineTextField() {
-        var text by remember { mutableStateOf("") }
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OutlinedTextField(
-                value = text,
-                onValueChange = { newText -> text = newText },
-                label = { Text("Número") }
-            )
-            Text(
-                text = "El numero es $text"
-            )
-        }
+@Composable
+fun TextFieldOutline () {
+    var text by remember { mutableStateOf("") }
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
+            value = text,
+            onValueChange = { newText -> text = newText },
+            label = { Text("Texto") }
+        )
+        Text(
+            text = "El texto es $text"
+        )
+    }
+}
+
+@Composable
+fun TextFieldIcono () {
+    var text by remember { mutableStateOf("") }
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
+            value = text,
+            onValueChange = { newText -> text = newText },
+            label = { Text("Texto") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "email-icon")},
+            trailingIcon = { Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "test-icon")}
+        )
+        Text(
+            text = "El texto es $text"
+        )
     }
 }
