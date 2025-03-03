@@ -19,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
 import com.example.ejemplo1.components.ActionButton
@@ -31,7 +33,7 @@ import com.example.ejemplo1.navigation.NavManager
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeView() {
+fun HomeView( navController : NavHostController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -47,13 +49,12 @@ fun HomeView() {
             ActionButton(Color.Red)
         }
     ) {
-        ContentView()
+        ContentView( navController )
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-private fun ContentView() {
+private fun ContentView( navController: NavHostController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -61,6 +62,6 @@ private fun ContentView() {
     ) {
         TitleView("HomeView")
         Spacers()
-        MainButton( name = "Soy un botón", backColor = Color.hsl(320f, 0.7f, 0.8f), color = Color.Black, onClick = { }  )
+        MainButton( name = "Soy un botón", backColor = Color.hsl(320f, 0.7f, 0.8f), color = Color.Black, onClick = { navController.navigate("Detail")}  )
     }
 }

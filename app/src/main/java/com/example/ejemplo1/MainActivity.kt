@@ -5,8 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.ContentView
-import com.example.ejemplo1.views.DetailView
-import com.example.ejemplo1.views.HomeView
+import com.example.ejemplo1.navigation.NavManager
 
 // Modulos Ejemplo 1
 class MainActivity : ComponentActivity() {
@@ -14,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HomeView()
+            NavManager()
         }
     }
 }
